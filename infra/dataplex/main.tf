@@ -6,7 +6,7 @@ provider "google" {
 }
 
 resource "google_data_catalog_taxonomy" "taxonomy" {
-  project      = var.project_id
+  project                = var.project_id
   region                 = var.region
   display_name           = var.display_name_taxonomy
   description            = "A collection of policy tags"
@@ -20,7 +20,7 @@ resource "google_data_catalog_policy_tag" "tag" {
 }
 
 resource "google_bigquery_datapolicy_data_policy" "finance_mask_default" {
-  project      = var.project_id
+  project          = var.project_id
   location         = var.region
   data_policy_id   = var.data_policy_id
   policy_tag       = google_data_catalog_policy_tag.tag.name
