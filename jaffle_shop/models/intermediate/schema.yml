@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: int_customers
+    description: One record per customer
+    meta:
+      contains_pii: yes
+    columns:
+      - name: customer_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: first_order_date
+        description: NULL when a customer has not yet placed an order.
+      - name: last_name
+        policy_tags:
+          - '{{ var ("FINANCE_DEFAULT_MASKING_VALUE") }}'
